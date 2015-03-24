@@ -6,8 +6,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <Grid Height="100" Width="100">
-
-        </Grid>
+        <Canvas Height="270" Width="300" Name="rootCanvas">
+            <Path Stroke="Black" Data="M0,270 L150,0 L300,270Z"/>
+            <!--<Path Stroke="Red" Data="M135,27 L140,27"/>-->
+        </Canvas>
     </Grid>
 </UserControl>
