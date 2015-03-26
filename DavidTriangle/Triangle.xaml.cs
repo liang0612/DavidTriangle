@@ -23,10 +23,12 @@ namespace DavidTriangle
         {
             InitializeComponent();
             InitiRuler();
+            DrawingPoint();
         }
 
-        double triangleHeight = 270.0;
-        double triangleWidth = 300.0;
+        public static double triangleHeight = 270.0;
+        public static double triangleWidth = 300.0;
+
         /// <summary>
         /// 初始化标尺
         /// </summary>
@@ -34,12 +36,12 @@ namespace DavidTriangle
         {
             double h = triangleHeight;
             double w = triangleWidth;
-            SolidColorBrush brush  = new SolidColorBrush(Colors.Black);
+            SolidColorBrush brush = new SolidColorBrush(Colors.Black);
             int rulerNumber = 10;
             for (int i = 1; i < 10; i++)
             {
-               
-                double x =  (w * i / 20);
+
+                double x = (w * i / 20);
                 double y = h * i / 10;
                 Line lineCH4 = new Line();
                 lineCH4.Stroke = brush;
@@ -49,7 +51,7 @@ namespace DavidTriangle
                 lineCH4.Y2 = y;
                 if (i % 2 == 0)
                 {
-                    rulerNumber =100- rulerNumber * i;
+                    rulerNumber = 100 - rulerNumber * i;
                     TextBlock txt = new TextBlock();
                     txt.Text = rulerNumber.ToString();
                     this.rootCanvas.Children.Add(txt);
@@ -75,6 +77,40 @@ namespace DavidTriangle
                 this.rootCanvas.Children.Add(lineC2H2);
                 rulerNumber = 10;
             }
+        }
+        private void DrawingPoint()
+        {
+            SolidColorBrush brush = new SolidColorBrush(Colors.Red);
+            //DrawingVisual drawing = new DrawingVisual();
+            //DrawingContext context = drawing.RenderOpen();
+            //context.DrawEllipse(brush, new Pen(brush, 1), CH4CoordinateConverter(80), 10, 10);
+            //context.Close();
+            Ellipse eli = new Ellipse();
+            eli.Width = 6;
+            eli.Height = 6;
+            eli.Fill = brush;
+            rootCanvas.Children.Add(eli);
+            Point p = C2H4CoordinateConverter(80);
+            Canvas.SetLeft(eli, p.X - 3);
+            Canvas.SetTop(eli, p.Y - 3);
+        }
+        /// <summary>
+        /// 坐标转换对应的CH4的数值转化为Canvas的坐标
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
+        private Point CH4CoordinateConverter(double x)
+        {
+            return new Point(2 * triangleWidth / 5, triangleHeight / 5);
+        }
+        /// <summary>
+        /// 坐标转换对应的CH4的坐标转化为Canvas的坐标
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
+        private Point C2H4CoordinateConverter(double x)
+        {
+            return new Point(triangleWidth - 2 * triangleWidth / 5, triangleHeight - triangleHeight / 5);
         }
     }
 }

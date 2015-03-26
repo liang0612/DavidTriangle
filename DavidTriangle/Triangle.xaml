@@ -3,12 +3,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DavidTriangle"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="600">
+    <UserControl.Resources>
+        <local:CH4Converter x:Key="CH4Converter"/>
+        <local:C2H2Converter x:Key="C2H2Converter"/>
+        <local:C2H4Converter x:Key="C2H4Converter"/>
+    </UserControl.Resources>
     <Grid>
-        <Canvas Height="270" Width="300" Name="rootCanvas">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Canvas Height="270" Width="300" Name="rootCanvas" Grid.Column="0">
             <Path Stroke="Black" Data="M0,270 L150,0 L300,270Z"/>
             <!--<Path Stroke="Red" Data="M135,27 L140,27"/>-->
+            <Ellipse Width="6" Height="6" Fill="Red" Canvas.Left="{Binding ElementName=ch4Slider, Path=Value,Converter={StaticResource CH4Converter},ConverterParameter=Left}"
+                     Canvas.Top="{Binding ElementName=ch4Slider, Path=Value,Converter={StaticResource CH4Converter},ConverterParameter=Top}"/>
+
+            <Ellipse Width="6" Height="6" Fill="Blue" Canvas.Left="{Binding ElementName=ch4Slider, Path=Value,Converter={StaticResource C2H2Converter},ConverterParameter=Left}"
+                     Canvas.Top="{Binding ElementName=ch4Slider, Path=Value,Converter={StaticResource C2H2Converter},ConverterParameter=Top}"/>
+
+            <Ellipse Width="6" Height="6" Fill="Green" Canvas.Left="{Binding ElementName=ch4Slider, Path=Value,Converter={StaticResource C2H4Converter},ConverterParameter=Left}"
+                     Canvas.Top="{Binding ElementName=ch4Slider, Path=Value,Converter={StaticResource C2H4Converter},ConverterParameter=Top}"/>
         </Canvas>
+        <Slider Grid.Column="1" Maximum="100" Name="ch4Slider" HorizontalAlignment="Left" Margin="53,34,0,0" VerticalAlignment="Top" Width="218"/>
+        <TextBlock Grid.Column="1" Text="{Binding ElementName=ch4Slider, Path=Value}" HorizontalAlignment="Left" Margin="104,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
     </Grid>
 </UserControl>
