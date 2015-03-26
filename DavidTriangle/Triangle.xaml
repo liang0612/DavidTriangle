@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DavidTriangle"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="600">
+             d:DesignHeight="500" d:DesignWidth="600">
     <UserControl.Resources>
         <local:CH4Converter x:Key="CH4Converter"/>
         <local:C2H2Converter x:Key="C2H2Converter"/>
@@ -16,8 +16,11 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Canvas Height="270" Width="300" Name="rootCanvas" Grid.Column="0">
-            <Path Stroke="Black" Data="M0,270 L150,0 L300,270Z"/>
+        <Canvas Height="445" Width="510" Name="rootCanvas" Grid.Column="0">
+            <Path Stroke="Black" Data="M0,445 L255,0 L510,445Z"/>
+            <Path Fill="#A7CAF0" StrokeThickness="0" Data="M221,60 L279,159 L120,444.5 L1,444.5Z"/>
+            <Path Fill="#00FFFF" StrokeThickness="0" Data="M279,159 L326,235 L284,306.5 L364,444.5 L119,444.5Z"/>
+            <Path Fill="#3F60BF" StrokeThickness="0" Data="M247,21 L374,242 L345,290 L435,444.5 L364,444.5 L284,306.5 L326,235 L221,60Z"/>
             <!--<Path Stroke="Red" Data="M135,27 L140,27"/>-->
             <Ellipse Width="6" Height="6" Fill="Red" Canvas.Left="{Binding ElementName=ch4Slider, Path=Value,Converter={StaticResource CH4Converter},ConverterParameter=Left}"
                      Canvas.Top="{Binding ElementName=ch4Slider, Path=Value,Converter={StaticResource CH4Converter},ConverterParameter=Top}"/>
