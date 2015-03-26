@@ -56,6 +56,8 @@
     <Compile Include="C2H2Converter.cs" />
     <Compile Include="C2H4Converter.cs" />
     <Compile Include="CH4Converter.cs" />
+    <Compile Include="CoordinateConverterHelp.cs" />
+    <Compile Include="EnumGas.cs" />
     <Compile Include="Triangle.xaml.cs">
       <DependentUpon>Triangle.xaml</DependentUpon>
     </Compile>

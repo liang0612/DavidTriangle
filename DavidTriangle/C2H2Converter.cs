@@ -13,9 +13,11 @@ namespace DavidTriangle
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             if (value == null) return value;
+            
             double c2h2Value = double.Parse(value.ToString());
-            double y = (100 - c2h2Value) * Triangle.triangleHeight / 100;
-            double x = Triangle.triangleWidth - c2h2Value * Triangle.triangleWidth/100;
+            //double y = (100 - c2h2Value) * Triangle.triangleHeight / 100;
+            //double x = Triangle.triangleWidth - c2h2Value * Triangle.triangleWidth/100;
+            double x = CoordinateConverterHelp.CoordinateConverter(c2h2Value, EnumGas.C2H2).X;
             if (parameter.ToString() == "Left")
             {
                 return x - 3;

@@ -14,8 +14,11 @@ namespace DavidTriangle
         {
             if(value==null)return value;
             double ch4Value = double.Parse(value.ToString());
-            double y = (100 - ch4Value) * Triangle.triangleHeight / 100;
-            double x = Triangle.triangleWidth/2-Triangle.triangleWidth * y / (2*Triangle.triangleHeight);
+            //double y = (100 - ch4Value) * Triangle.triangleHeight / 100;
+            //double x = Triangle.triangleWidth/2-Triangle.triangleWidth * y / (2*Triangle.triangleHeight);
+            double x = CoordinateConverterHelp.CoordinateConverter(ch4Value, EnumGas.CH4).X;
+            double y = CoordinateConverterHelp.CoordinateConverter(ch4Value, EnumGas.CH4).Y;
+
             if (parameter.ToString() == "Left")
             {
                 return x-3;

@@ -22,8 +22,9 @@ namespace DavidTriangle
         public Triangle()
         {
             InitializeComponent();
-            InitiRuler();
             DrawingPoint();
+            InitiRuler();
+
         }
 
         public static double triangleHeight = 270.0;
@@ -80,37 +81,33 @@ namespace DavidTriangle
         }
         private void DrawingPoint()
         {
-            SolidColorBrush brush = new SolidColorBrush(Colors.Red);
-            //DrawingVisual drawing = new DrawingVisual();
-            //DrawingContext context = drawing.RenderOpen();
-            //context.DrawEllipse(brush, new Pen(brush, 1), CH4CoordinateConverter(80), 10, 10);
-            //context.Close();
-            Ellipse eli = new Ellipse();
-            eli.Width = 6;
-            eli.Height = 6;
-            eli.Fill = brush;
-            rootCanvas.Children.Add(eli);
-            Point p = C2H4CoordinateConverter(80);
-            Canvas.SetLeft(eli, p.X - 3);
-            Canvas.SetTop(eli, p.Y - 3);
+            SolidColorBrush brush = new SolidColorBrush(Color.FromRgb(167, 202, 240));
+            Path path = new Path();
+            path.StrokeThickness = 0; 
+            //path.Opacity = 0.8;
+            path.Fill = brush;
+            path.Stroke = brush;
+            PathGeometry geo = new PathGeometry();
+            PathFigure figure = new PathFigure();
+            figure.StartPoint = CoordinateConverterHelp.CoordinateConverter(87, EnumGas.CH4);
+            figure.IsClosed = false;
+            double lineX = CoordinateConverterHelp.CoordinateConverter(45, EnumGas.C2H2).X;
+            double lineY = CoordinateConverterHelp.CoordinateConverter(65, EnumGas.CH4).Y;
+            LineSegment line = new LineSegment(new Point(lineX,lineY),false);
+
+            double line1X = CoordinateConverterHelp.CoordinateConverter(78, EnumGas.C2H2).X;
+            double line1Y = CoordinateConverterHelp.CoordinateConverter(0, EnumGas.CH4).Y;
+            LineSegment line1 = new LineSegment(new Point(line1X, line1Y), false);
+
+            LineSegment line2 = new LineSegment(new Point(0, 270), false);
+
+            figure.Segments.Add(line);
+            figure.Segments.Add(line1);
+            figure.Segments.Add(line2);
+            geo.Figures.Add(figure);
+            path.Data = geo;
+            this.rootCanvas.Children.Add(path);
         }
-        /// <summary>
-        /// 坐标转换对应的CH4的数值转化为Canvas的坐标
-        /// </summary>
-        /// <param name="x"></param>
-        /// <returns></returns>
-        private Point CH4CoordinateConverter(double x)
-        {
-            return new Point(2 * triangleWidth / 5, triangleHeight / 5);
-        }
-        /// <summary>
-        /// 坐标转换对应的CH4的坐标转化为Canvas的坐标
-        /// </summary>
-        /// <param name="x"></param>
-        /// <returns></returns>
-        private Point C2H4CoordinateConverter(double x)
-        {
-            return new Point(triangleWidth - 2 * triangleWidth / 5, triangleHeight - triangleHeight / 5);
-        }
+
     }
 }

@@ -17,8 +17,10 @@ namespace DavidTriangle
             double w=Triangle.triangleWidth;
             double h=Triangle.triangleHeight;
             //c2h4Value = 100 - c2h4Value;
-            double y =  c2h4Value * Triangle.triangleHeight / 100;
-            double x = w * (y + h) / (2 * h);
+            //double y =  c2h4Value * Triangle.triangleHeight / 100;
+            //double x = w * (y + h) / (2 * h);
+            double x = CoordinateConverterHelp.CoordinateConverter(c2h4Value, EnumGas.C2H4).X;
+            double y = CoordinateConverterHelp.CoordinateConverter(c2h4Value, EnumGas.C2H4).Y;
             if (parameter.ToString() == "Left")
             {
                 return x-3;
