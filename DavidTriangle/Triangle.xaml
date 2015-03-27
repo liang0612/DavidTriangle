@@ -16,21 +16,25 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Canvas Height="445" Width="510" Name="rootCanvas" Grid.Column="0">
-            <Path Stroke="Black" Data="M0,445 L255,0 L510,445Z"/>
-            <Path Fill="#A7CAF0" StrokeThickness="0" Data="M221,60 L279,159 L120,444.5 L1,444.5Z"/>
-            <Path Fill="#00FFFF" StrokeThickness="0" Data="M279,159 L326,235 L284,306.5 L364,444.5 L119,444.5Z"/>
-            <Path Fill="#3F60BF" StrokeThickness="0" Data="M247,21 L374,242 L345,290 L435,444.5 L364,444.5 L284,306.5 L326,235 L221,60Z"/>
-            <!--<Path Stroke="Red" Data="M135,27 L140,27"/>-->
-            <Ellipse Width="6" Height="6" Fill="Red" Canvas.Left="{Binding ElementName=ch4Slider, Path=Value,Converter={StaticResource CH4Converter},ConverterParameter=Left}"
+        <Grid x:Name="LayoutRoot" >
+            <Canvas Width="512" Height="443" Name="rootCanvas" Grid.Column="0" Grid.ColumnSpan="2">
+                <Path Stroke="red" Data="M0,443 L255,0 L512,443Z"/>
+                <Path Fill="#A7CAF0" StrokeThickness="0" Data="M221.26601,0 L280.141,101.45488 116.13996,384.40625 0,384.39062 z" Height="384.406" Canvas.Left="0.859" Canvas.Top="58.092" Width="280.141"/>
+                <Path Fill="#00FFFF" StrokeThickness="0" Data="M163.97703,8.3042884 L207.97137,84.108585 166.2888,154.91331 244.75868,291.20562 0,291.20884 z" Height="282.938" Canvas.Left="117.004" Canvas.Top="159.56" Width="244.787" Stretch="Fill"/>
+                <Path Fill="#3F60BF" StrokeThickness="0" Data="M23.078125,0 L150.73438,221.87563 122.4375,270.5475 212.28125,424.46875 139.67187,424.48437 61.1875,288.17187 102.95833,217.44271 3.2626522E-55,40.078125 z" Height="424.484" Canvas.Left="222.125" Canvas.Top="18.015" Width="212.281"/>
+                <Path Data="M255.00104,1.039332 L306.64074,90.049226 296.45568,107.13748 245.16617,18.351784 z" Fill="#FFFEF4" Height="106.107" Canvas.Left="245.164" Stretch="Fill" Canvas.Top="1.031" Width="61.478"/>
+                <Path Data="M306.72152,90.125972 L383.28824,222.22315 372.93768,239.95513 296.53467,107.18859 z" Fill="#E1A1C3" Height="149.828" Canvas.Left="296.469" Stretch="Fill" Canvas.Top="90.063" Width="86.757"/>
+                <Path Data="M344.58095,288.27746 L383.01758,222.08143 510.06853,441.4797 433.86227,441.51056 z" Height="220.438" Canvas.Left="344.578" Stretch="Fill" Fill="#D05F8A" Canvas.Top="222.062" Width="166.501"/>
+                <Ellipse Width="6" Height="6" Fill="Red" Canvas.Left="{Binding ElementName=ch4Slider, Path=Value,Converter={StaticResource CH4Converter},ConverterParameter=Left}"
                      Canvas.Top="{Binding ElementName=ch4Slider, Path=Value,Converter={StaticResource CH4Converter},ConverterParameter=Top}"/>
 
-            <Ellipse Width="6" Height="6" Fill="Blue" Canvas.Left="{Binding ElementName=ch4Slider, Path=Value,Converter={StaticResource C2H2Converter},ConverterParameter=Left}"
+                <Ellipse Width="6" Height="6" Fill="Blue" Canvas.Left="{Binding ElementName=ch4Slider, Path=Value,Converter={StaticResource C2H2Converter},ConverterParameter=Left}"
                      Canvas.Top="{Binding ElementName=ch4Slider, Path=Value,Converter={StaticResource C2H2Converter},ConverterParameter=Top}"/>
 
-            <Ellipse Width="6" Height="6" Fill="Green" Canvas.Left="{Binding ElementName=ch4Slider, Path=Value,Converter={StaticResource C2H4Converter},ConverterParameter=Left}"
+                <Ellipse Width="6" Height="6" Fill="Green" Canvas.Left="{Binding ElementName=ch4Slider, Path=Value,Converter={StaticResource C2H4Converter},ConverterParameter=Left}"
                      Canvas.Top="{Binding ElementName=ch4Slider, Path=Value,Converter={StaticResource C2H4Converter},ConverterParameter=Top}"/>
-        </Canvas>
+            </Canvas>
+        </Grid>
         <Slider Grid.Column="1" Maximum="100" Name="ch4Slider" HorizontalAlignment="Left" Margin="53,34,0,0" VerticalAlignment="Top" Width="218"/>
         <TextBlock Grid.Column="1" Text="{Binding ElementName=ch4Slider, Path=Value}" HorizontalAlignment="Left" Margin="104,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
     </Grid>

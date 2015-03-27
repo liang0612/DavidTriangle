@@ -4,6 +4,6 @@
         xmlns:local="clr-namespace:DavidTriangle" x:Class="DavidTriangle.MainWindow"
         Title="MainWindow" Height="568" Width="686">
     <Grid Margin="10">
-        <local:Triangle />
+        <local:Triangle Margin="46,-28,-46,28" />
     </Grid>
 </Window>
