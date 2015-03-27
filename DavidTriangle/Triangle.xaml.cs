@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Expression.Controls;
 
 namespace DavidTriangle
 {
@@ -22,9 +23,8 @@ namespace DavidTriangle
         public Triangle()
         {
             InitializeComponent();
-            //DrawingPoint();
+            
             InitiRuler();
-
         }
 
         public static double triangleHeight = 443;
