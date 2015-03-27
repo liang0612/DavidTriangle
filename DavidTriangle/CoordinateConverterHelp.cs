@@ -33,5 +33,23 @@ namespace DavidTriangle
             }
             return new Point(x, y);
         }
+
+        public static double PointConvertCH(Point point, EnumGas gas)
+        {
+            double w = Triangle.triangleWidth;
+            double h = Triangle.triangleHeight;
+            switch (gas)
+            {
+                case EnumGas.C2H2:
+                    return 100 * (w - point.X) / w;
+                case EnumGas.C2H4:
+                    return 100 * point.Y / h;
+                case EnumGas.CH4:
+                    return 100- 100 * point.Y / h;
+                default:
+                    break;
+            }
+            return 0;
+        }
     }
 }

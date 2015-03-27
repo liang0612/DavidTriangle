@@ -6,103 +6,169 @@
              xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
              xmlns:local="clr-namespace:DavidTriangle"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="600">
+             d:DesignHeight="500" d:DesignWidth="800">
     <UserControl.Resources>
         <local:CH4Converter x:Key="CH4Converter"/>
         <local:C2H2Converter x:Key="C2H2Converter"/>
         <local:C2H4Converter x:Key="C2H4Converter"/>
+        <SolidColorBrush x:Key="D1Color" Color="#A7CAF0"/>
+        <SolidColorBrush x:Key="D2Color" Color="#00FFFF"/>
+        <SolidColorBrush x:Key="DTColor" Color="#3F60BF"/>
+        <SolidColorBrush x:Key="T1Color" Color="#FFFEF4"/>
+        <SolidColorBrush x:Key="T2Color" Color="#E1A1C3"/>
+        <SolidColorBrush x:Key="T3Color" Color="#D05F8A"/>
+        <SolidColorBrush x:Key="PDColor" Color="#029FC0"/>
+        <Style x:Key="ThumbStyle1" TargetType="{x:Type Thumb}">
+        	<Setter Property="Stylus.IsPressAndHoldEnabled" Value="false"/>
+        	<Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+        	<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+        	<Setter Property="Template">
+        		<Setter.Value>
+        			<ControlTemplate TargetType="{x:Type Thumb}">
+                        <Ellipse Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Fill="{TemplateBinding Background}"/>
+                    </ControlTemplate>
+        		</Setter.Value>
+        	</Setter>
+        </Style>
+
     </UserControl.Resources>
-    <Canvas>
-        <Grid x:Name="LayoutRoot"  Grid.Column="0">
-            <Canvas Width="512" Height="443" Name="rootCanvas" >
-                <Path Stroke="red" Data="M0,443 L255,0 L512,443Z"/>
-                <Path Fill="#A7CAF0" StrokeThickness="0" Data="M221.26601,0 L280.141,101.45488 116.13996,384.40625 0,384.39062 z" Height="384.406" Canvas.Left="0.859" Canvas.Top="58.092" Width="280.141"/>
-                <Path Fill="#00FFFF" StrokeThickness="0" Data="M163.97703,8.3042884 L207.97137,84.108585 166.2888,154.91331 244.75868,291.20562 0,291.20884 z" Height="282.938" Canvas.Left="117.004" Canvas.Top="159.56" Width="244.787" Stretch="Fill"/>
-                <Path Fill="#3F60BF" StrokeThickness="0" Data="M23.078125,0 L150.73438,221.87563 122.4375,270.5475 212.28125,424.46875 139.67187,424.48437 61.1875,288.17187 102.95833,217.44271 3.2626522E-55,40.078125 z" Height="424.484" Canvas.Left="222.125" Canvas.Top="18.015" Width="212.281"/>
-                <Path Data="M255.00104,1.039332 L306.64074,90.049226 296.45568,107.13748 245.16617,18.351784 z" Fill="#FFFEF4" Height="106.107" Canvas.Left="245.164" Stretch="Fill" Canvas.Top="1.031" Width="61.478"/>
-                <Path Data="M306.72152,90.125972 L383.28824,222.22315 372.93768,239.95513 296.53467,107.18859 z" Fill="#E1A1C3" Height="149.828" Canvas.Left="296.469" Stretch="Fill" Canvas.Top="90.063" Width="86.757"/>
-                <Path Data="M344.58095,288.27746 L383.01758,222.08143 510.06853,441.4797 433.86227,441.51056 z" Height="220.438" Canvas.Left="344.578" Stretch="Fill" Fill="#D05F8A" Canvas.Top="222.062" Width="166.501"/>
-                <Ellipse Width="6" Height="6" Fill="Red" Canvas.Left="{Binding ElementName=ch4Slider, Path=Value,Converter={StaticResource CH4Converter},ConverterParameter=Left}"
-                     Canvas.Top="{Binding ElementName=ch4Slider, Path=Value,Converter={StaticResource CH4Converter},ConverterParameter=Top}"/>
-
-                <Ellipse Width="6" Height="6" Fill="Blue" Canvas.Left="{Binding ElementName=ch4Slider, Path=Value,Converter={StaticResource C2H2Converter},ConverterParameter=Left}"
-                     Canvas.Top="{Binding ElementName=ch4Slider, Path=Value,Converter={StaticResource C2H2Converter},ConverterParameter=Top}"/>
-
-                <Ellipse Width="6" Height="6" Fill="Green" Canvas.Left="{Binding ElementName=ch4Slider, Path=Value,Converter={StaticResource C2H4Converter},ConverterParameter=Left}"
-                     Canvas.Top="{Binding ElementName=ch4Slider, Path=Value,Converter={StaticResource C2H4Converter},ConverterParameter=Top}"/>
-            </Canvas>
-        </Grid>
-        <Slider Grid.Column="1" Maximum="100" Name="ch4Slider" HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" Canvas.Left="372" Canvas.Top="15"/>
-        <TextBlock Grid.Column="1" Text="{Binding ElementName=ch4Slider, Path=Value}" HorizontalAlignment="Left" Margin="104,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Canvas Height="25" Width="50" Margin="69,167.5,181,307.5" RenderTransformOrigin="0.5,0.5">
-            <Canvas.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-60.978"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Canvas.RenderTransform>
-            <TextBlock>
-                 %CH<Run BaselineAlignment="Subscript" FontSize="8">4</Run>
-            </TextBlock>
-            <ed:LineArrow Fill="#FFF4F4F5" EndArrow="OpenArrow" BendAmount="0" HorizontalAlignment="Left" Height="2" Stroke="Black" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.5,0.5" Canvas.Left="-29.454" Canvas.Top="26.052">
-                <ed:LineArrow.RenderTransform>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Canvas Width="520">
+            <Grid x:Name="LayoutRoot"  Grid.Column="0">
+                <Canvas Width="512" Height="443" Name="rootCanvas" >
+                    <Path Stroke="red" Data="M0,443 L255,0 L512,443Z"/>
+                    <Path Fill="{StaticResource D1Color}" StrokeThickness="0" Data="M221.26601,0 L280.141,101.45488 116.13996,384.40625 0,384.39062 z" Height="384.406" Canvas.Left="0.859" Canvas.Top="58.092" Width="280.141"/>
+                    <Path Fill="{StaticResource D2Color}" StrokeThickness="0" Data="M163.97703,8.3042884 L207.97137,84.108585 166.2888,154.91331 244.75868,291.20562 0,291.20884 z" Height="282.938" Canvas.Left="117.004" Canvas.Top="159.56" Width="244.787" Stretch="Fill"/>
+                    <Path Fill="{StaticResource DTColor}" StrokeThickness="0" Data="M23.078125,0 L150.73438,221.87563 122.4375,270.5475 212.28125,424.46875 139.67187,424.48437 61.1875,288.17187 102.95833,217.44271 3.2626522E-55,40.078125 z" Height="424.484" Canvas.Left="222.125" Canvas.Top="18.015" Width="212.281"/>
+                    <Path Fill="{StaticResource T1Color}" Data="M260.21005,10.008332 L306.64074,90.049226 296.45568,107.13748 245.20567,18.022921 249.83571,10.008332 z"  Height="97.138" Canvas.Left="245.203" Stretch="Fill" Canvas.Top="10" Width="61.439"/>
+                    <Path Fill="{StaticResource T2Color}" Data="M306.72152,90.125972 L383.28824,222.22315 372.93768,239.95513 296.53467,107.18859 z" Height="149.828" Canvas.Left="296.469" Stretch="Fill" Canvas.Top="90.063" Width="86.757"/>
+                    <Path Fill="{StaticResource T3Color}" Data="M344.58095,288.27746 L383.01758,222.08143 510.06853,441.4797 433.86227,441.51056 z" Height="220.438" Canvas.Left="344.578" Stretch="Fill" Canvas.Top="222.062" Width="166.501"/>
+                    <Path Fill="{StaticResource PDColor }" Data="M298.23926,235.37855 L303.36408,226.4525 308.53563,235.37893 z" Height="8.968" Canvas.Left="249.844" Stretch="Fill" Canvas.Top="1.016" Width="10.359"/>
+                    <Line Name="lineH" Width="510" Height="1"  Stroke="Red"  Fill="Red" Stretch="Fill" Canvas.Left="0"  X1="0"
+                          Y1="0" X2="510" Y2="0" Margin="0,5" Canvas.Top="{Binding ElementName=thumb1, Path=(Canvas.Top)}"/>
+                    <Line Name="lineV" Width="1" Height="445"  Stroke="Red"  Fill="Red" Stretch="Fill"   X1="0"
+                          Y1="0" X2="0" Y2="445" Margin="5,0" Canvas.Left="{Binding ElementName=thumb1, Path=(Canvas.Left)}"/>
+                    <Thumb Name="thumb1" Width="10" Height="10" Background="Red" Canvas.Left="0" Canvas.Top="0" 
+                           Style="{DynamicResource ThumbStyle1}" DragDelta="Thumb_DragDelta" DragCompleted="thumb1_DragCompleted" />
+                    <TextBlock Canvas.Left="147" TextWrapping="Wrap" Text="D1" Canvas.Top="274"/>
+                    <TextBlock Canvas.Left="253" TextWrapping="Wrap" Text="D2" Canvas.Top="251"/>
+                    <TextBlock Canvas.Left="315" TextWrapping="Wrap" Text="D+T" Canvas.Top="315"/>
+                    <TextBlock Canvas.Left="267" TextWrapping="Wrap" Text="T1" Canvas.Top="45"/>
+                    <TextBlock Canvas.Left="335" TextWrapping="Wrap" Text="T2" Canvas.Top="160"/>
+                    <TextBlock Canvas.Left="408" TextWrapping="Wrap" Text="T3" Canvas.Top="318"/>
+                    <TextBlock Canvas.Left="226" TextWrapping="Wrap" Text="PD" Canvas.Top="1"/>
+                </Canvas>
+            </Grid>
+            <TextBlock Grid.Column="1" Text="{Binding ElementName=ch4Slider, Path=Value}" HorizontalAlignment="Left" Margin="104,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <Canvas Height="25" Width="50" Margin="69,167.5,181,307.5" RenderTransformOrigin="0.5,0.5">
+                <Canvas.RenderTransform>
                     <TransformGroup>
-                        <ScaleTransform ScaleY="-1"/>
+                        <ScaleTransform/>
                         <SkewTransform/>
-                        <RotateTransform Angle="0.854"/>
+                        <RotateTransform Angle="-60.978"/>
                         <TranslateTransform/>
                     </TransformGroup>
-                </ed:LineArrow.RenderTransform>
-            </ed:LineArrow>
-        </Canvas>
-        <Canvas Height="25" Width="150" Canvas.Left="169" Canvas.Top="476" >
-            <TextBlock  Canvas.Left="116" Canvas.Top="-11">
+                </Canvas.RenderTransform>
+                <TextBlock>
+                 %CH<Run BaselineAlignment="Subscript" FontSize="8">4</Run>
+                </TextBlock>
+                <ed:LineArrow Fill="#FFF4F4F5" EndArrow="OpenArrow" BendAmount="0" HorizontalAlignment="Left" Height="2" Stroke="Black" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.5,0.5" Canvas.Left="-29.454" Canvas.Top="26.052">
+                    <ed:LineArrow.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="-1"/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="0.854"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ed:LineArrow.RenderTransform>
+                </ed:LineArrow>
+            </Canvas>
+            <Canvas Height="25" Width="150" Canvas.Left="169" Canvas.Top="476" >
+                <TextBlock  Canvas.Left="116" Canvas.Top="-11">
                %C<Run BaselineAlignment="Subscript" FontSize="8">2</Run>
                 H<Run BaselineAlignment="Subscript" FontSize="8">2</Run>
-            </TextBlock>
-            <ed:LineArrow Fill="#FFF4F4F5" EndArrow="OpenArrow" BendAmount="0"  Height="2" Stroke="Black"  Width="100" RenderTransformOrigin="0.5,0.5">
-                <ed:LineArrow.RenderTransform>
+                </TextBlock>
+                <ed:LineArrow Fill="#FFF4F4F5" EndArrow="OpenArrow" BendAmount="0"  Height="2" Stroke="Black"  Width="100" RenderTransformOrigin="0.5,0.5">
+                    <ed:LineArrow.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-181.422"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ed:LineArrow.RenderTransform>
+                </ed:LineArrow>
+            </Canvas>
+            <Canvas Height="25" Width="150" Canvas.Left="389" Canvas.Top="232" RenderTransformOrigin="0.5,0.5" >
+                <Canvas.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
                         <SkewTransform/>
-                        <RotateTransform Angle="-181.422"/>
+                        <RotateTransform Angle="2.671"/>
                         <TranslateTransform/>
                     </TransformGroup>
-                </ed:LineArrow.RenderTransform>
-            </ed:LineArrow>
-        </Canvas>
-        <Canvas Height="25" Width="150" Canvas.Left="420" Canvas.Top="225" RenderTransformOrigin="0.5,0.5" >
-            <Canvas.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="2.671"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Canvas.RenderTransform>
-            <TextBlock Canvas.Left="50" Canvas.Top="-12" RenderTransformOrigin="0.5,0.5">
+                </Canvas.RenderTransform>
+                <TextBlock Canvas.Left="50" Canvas.Top="-12" RenderTransformOrigin="0.5,0.5">
                  %C<Run BaselineAlignment="Subscript" FontSize="8">2</Run>H<Run BaselineAlignment="Subscript" FontSize="8">4</Run>
-                <TextBlock.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="60.221"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </TextBlock.RenderTransform>
-            </TextBlock>
-            <ed:LineArrow Fill="#FFF4F4F5" EndArrow="OpenArrow" BendAmount="0"  Height="2" Stroke="Black"  Width="100" RenderTransformOrigin="0.5,0.5">
-                <ed:LineArrow.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="-304.168"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </ed:LineArrow.RenderTransform>
-            </ed:LineArrow>
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="60.221"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <ed:LineArrow Fill="#FFF4F4F5" EndArrow="OpenArrow" BendAmount="0"  Height="2" Stroke="Black"  Width="100" RenderTransformOrigin="0.5,0.5">
+                    <ed:LineArrow.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-304.168"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ed:LineArrow.RenderTransform>
+                </ed:LineArrow>
+            </Canvas>
         </Canvas>
-    </Canvas>
+        <Grid  Grid.Column="1" >
+            <Grid.Resources>
+                <Style  TargetType="TextBlock">
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="Margin" Value="5,0"/>
+                </Style>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="45"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Rectangle Grid.Row="0" Width="45" Height="20" StrokeThickness="1" Stroke="Black" Fill="{StaticResource D1Color}"/>
+            <Rectangle Grid.Row="1" Width="45" Height="20" StrokeThickness="1" Stroke="Black" Fill="{StaticResource D2Color}"/>
+            <Rectangle Grid.Row="2" Width="45" Height="20" StrokeThickness="1" Stroke="Black" Fill="{StaticResource DTColor}"/>
+            <Rectangle Grid.Row="3" Width="45" Height="20" StrokeThickness="1" Stroke="Black" Fill="{StaticResource T1Color}"/>
+            <Rectangle Grid.Row="4" Width="45" Height="20" StrokeThickness="1" Stroke="Black" Fill="{StaticResource T2Color}"/>
+            <Rectangle Grid.Row="5" Width="45" Height="20" StrokeThickness="1" Stroke="Black" Fill="{StaticResource T3Color}"/>
+            <Rectangle Grid.Row="6" Width="45" Height="20" StrokeThickness="1" Stroke="Black" Fill="{StaticResource PDColor}"/>
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="D1-低能放电"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="D2-高能放电"/>
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="D+T"/>
+            <TextBlock Grid.Row="3" Grid.Column="1" Text="T1-热故障 t&lt; 300C"/>
+            <TextBlock Grid.Row="4" Grid.Column="1" Text="T2-热故障 300C&lt; t&lt;700C"/>
+            <TextBlock Grid.Row="5" Grid.Column="1" Text="T3-热故障 t&gt;700C"/>
+            <TextBlock Grid.Row="6" Grid.Column="1" Text="PD-局部放电"/>
+        </Grid>
+    </Grid>
 </UserControl>
