@@ -113,6 +113,7 @@ namespace DavidTriangle
             double c2h4 = CoordinateConverterHelp.PointConvertCH(new Point(x, y), EnumGas.C2H4);
             double ch4 = CoordinateConverterHelp.PointConvertCH(new Point(x, y), EnumGas.CH4);
             thumb1.ToolTip = string.Format("X:{0},Y{1},C2H2:{2},C2H4:{3},Ch4:{4}", x, y, c2h2, c2h4, ch4);
+            tbxInfo.Text = string.Format("X:{0},Y{1},C2H2:{2:D},C2H4:{3:D},CH4:{4:D}", x, y, (int)c2h2, (int)c2h4, (int)ch4);
         }
 
     }

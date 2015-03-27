@@ -150,6 +150,7 @@
                 <RowDefinition Height="25"/>
                 <RowDefinition Height="25"/>
                 <RowDefinition Height="25"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="45"/>
@@ -169,6 +170,8 @@
             <TextBlock Grid.Row="4" Grid.Column="1" Text="T2-热故障 300C&lt; t&lt;700C"/>
             <TextBlock Grid.Row="5" Grid.Column="1" Text="T3-热故障 t&gt;700C"/>
             <TextBlock Grid.Row="6" Grid.Column="1" Text="PD-局部放电"/>
+            
+            <TextBlock Grid.Row="7" Name="tbxInfo" Grid.ColumnSpan="2" />
         </Grid>
     </Grid>
 </UserControl>
